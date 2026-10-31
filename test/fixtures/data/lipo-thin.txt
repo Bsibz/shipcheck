@@ -1,0 +1,1 @@
+Non-fat file: /Applications/Cursor.app/Contents/Resources/app/node_modules/kerberos/build/Release/kerberos.node is architecture: arm64

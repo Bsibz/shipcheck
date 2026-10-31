@@ -1,0 +1,61 @@
+shipcheck 0.2.0 — bundle → /Users/demo/Downloads/Demo.app
+found .app bundle: Demo.app
+macOS Darwin 27 (demo documentation run) · arm64 · node v24
+
+note: network: shipcheck has no network client; spctl and stapler were not run. Other host tools (codesign, xattr, lipo, otool, file) were invoked locally and are not sandboxed, so offline operation is by design, not OS-enforced.
+note: gatekeeper: spctl was not run (opt-in via --gatekeeper); the Gatekeeper verdict is UNKNOWN.
+
+BUNDLE IDENTITY
+  [inf ] bundle.identifier: CFBundleIdentifier: com.example.demo
+  [FAIL] bundle.build-version: CFBundleVersion missing — macOS treats build numbers as the machine-readable identity.
+  [inf ] bundle.executable-present: Main executable: Contents/MacOS/Demo
+  [warn] bundle.minimum-system: LSMinimumSystemVersion absent — users on older macOS crash on launch and your crash reports will look like product bugs.
+         hint: Declare the minimum deployment target.
+
+SIGNING
+  [FAIL] sign.presence: The bundle is not code-signed at all — Gatekeeper blocks install and users see “app is damaged” style blockers.
+         · codesign: code object is not signed at all
+         hint: Sign with a Developer ID identity under hardened runtime, then notarize and staple.
+  [skip] sign.validity {unknown}: Signature validity skipped: nothing signed.
+  [FAIL] sign.resources: Contents/_CodeSignature missing — not a complete signed bundle.
+
+ENTITLEMENTS
+  [skip] ent.hardened {unknown}: Entitlements skipped: binary is unsigned.
+
+NOTARIZATION
+  [warn] not.stapled {inferred}: No stapled ticket observed locally. Offline launch acceptance is unproven; assess a clean customer Mac.
+         · codesign -dv: no Notarization Ticket line
+         hint: Notarize and staple: xcrun notarytool submit → xcrun stapler staple.
+
+GATEKEEPER
+  [ ???] gatekeeper.assess {unknown}: Gatekeeper assessment not run: spctl may contact Apple, and shipcheck is offline by default. Result is UNKNOWN, not a pass.
+         hint: Re-run with --gatekeeper to opt in (may contact Apple).
+  [inf ] gatekeeper.quarantine: No quarantine xattr (typical for locally-installed or adopted apps).
+
+ARCHITECTURE
+  [ ???] arch.main {unknown}: Could not determine main executable architecture (lipo AND file failed).
+         · /Users/demo/Downloads/Demo.app/Contents/MacOS/Demo
+
+ASAR
+  [warn] asar.layout: Neither app.asar nor a loose Resources/app directory found — payload layout is not a recognizable Electron shape.
+
+NATIVE CODE
+  [inf ] native.inventory: No Mach-O native payload found in the bundle.
+
+UPDATER
+  [inf ] updater.story {inferred}: No updater hints observed in the inspected bundle. Custom code, remote feeds and manual delivery are not established by file absence.
+  [ ???] updater.delivery {unknown}: No update check, download, signature verification, install, feed access or end-to-end update rehearsal was performed.
+
+PATHS
+  [ ok ] paths.info-plist {inferred}: Info.plist is free of generator-host paths.
+  [ ok ] paths.executables {inferred}: No build-host path text found in 1 scanned Mach-O binary(ies).
+
+HASHES
+  [ ok ] hashes.executables: SHA-256 recorded for 1 of 1 artifact(s).
+         · 377bc5e04baff7614ba765935928d5dd1726cd90c109aaeffed98eb362a1d1c6  Contents/MacOS/Demo
+
+EVIDENCE verified=10 inferred=4 unknown=5
+ARTIFACT bundle sha256=n/a (not-applicable-directory)
+SUMMARY pass=3 info=5 warn=3 fail=3 unknown=3 skip=2
+VERDICT FAILURES
+UNRESOLVED unknown=3 skip=2 (not passes)

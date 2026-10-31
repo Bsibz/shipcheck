@@ -1,0 +1,4 @@
+/Applications/Cursor.app/Contents/Resources/app/node_modules/kerberos/build/Release/kerberos.node:
+	/System/Library/Frameworks/Kerberos.framework/Versions/A/Kerberos (compatibility version 5.0.0, current version 6.0.0)
+	/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 2100.43.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)

@@ -1,0 +1,56 @@
+{
+  "name": "shipcheck-mac",
+  "version": "0.2.0",
+  "description": "Read-only ship-check CLI for macOS/Electron release artifacts: bundle identity, codesign, local notarization evidence, opt-in Gatekeeper and stapler, ASAR, native modules, and local update metadata.",
+  "license": "MIT",
+  "author": "Night Build Co",
+  "keywords": [
+    "macos",
+    "electron",
+    "codesign",
+    "notarization",
+    "gatekeeper",
+    "asar",
+    "release",
+    "audit",
+    "ci"
+  ],
+  "type": "commonjs",
+  "engines": {
+    "node": ">=22"
+  },
+  "os": [
+    "darwin"
+  ],
+  "bin": {
+    "shipcheck": "dist/cli.js",
+    "shipcheck-mac": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "samples",
+    "CHANGELOG.md",
+    "SECURITY.md",
+    "LICENSE",
+    "README.md",
+    "VALIDATION.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepack": "npm run build",
+    "prepublishOnly": "npm test && npm run release:check",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "samples": "node test/gen-samples.mjs",
+    "policy": "npm run build && node test/policy.test.mjs",
+    "release:check": "node scripts/check-release.mjs",
+    "ci:strict-smoke": "node scripts/strict-smoke.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.6.0"
+  }
+}

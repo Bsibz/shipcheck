@@ -1,0 +1,1 @@
+Architectures in the fat file: /Applications/Ollama.app/Contents/MacOS/Ollama are: x86_64 arm64

@@ -1,0 +1,3 @@
+Mach-O universal binary with 2 architectures: [x86_64:Mach-O 64-bit executable x86_64] [arm64]
+/Applications/Ollama.app/Contents/MacOS/Ollama (for architecture x86_64):	Mach-O 64-bit executable x86_64
+/Applications/Ollama.app/Contents/MacOS/Ollama (for architecture arm64):	Mach-O 64-bit executable arm64

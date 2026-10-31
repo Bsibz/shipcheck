@@ -1,0 +1,3 @@
+/var/folders/c_/9l0tm9z53z5cq1cxp304ds400000gn/T/tmp.TJJ99xbygb/a: code object is not signed at all
+/var/folders/c_/9l0tm9z53z5cq1cxp304ds400000gn/T/tmp.TJJ99xbygb/a: code object is not signed at all
+In architecture: arm64

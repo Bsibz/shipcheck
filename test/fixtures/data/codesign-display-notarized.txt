@@ -1,0 +1,31 @@
+Executable=/Applications/Ollama.app/Contents/MacOS/Ollama
+Identifier=com.electron.ollama
+Format=app bundle with Mach-O universal (x86_64 arm64)
+CodeDirectory v=20500 size=52543 flags=0x10000(runtime) hashes=1635+3 location=embedded
+VersionPlatform=1
+VersionMin=917504
+VersionSDK=1704960
+Hash type=sha256 size=32
+CandidateCDHash sha256=e0d29b5708b017152c1f5e035864eeaf7fbfac10
+CandidateCDHashFull sha256=e0d29b5708b017152c1f5e035864eeaf7fbfac10c4dfd809856172515effd42e
+Hash choices=sha256
+CMSDigest=e0d29b5708b017152c1f5e035864eeaf7fbfac10c4dfd809856172515effd42e
+CMSDigestType=2
+Executable Segment base=0
+Executable Segment limit=25018368
+Executable Segment flags=0x1
+Page size=16384
+CDHash=e0d29b5708b017152c1f5e035864eeaf7fbfac10
+Signature size=9067
+Authority=Developer ID Application: Infra Technologies, Inc (3MU9H2V9Y9)
+Authority=Developer ID Certification Authority
+Authority=Apple Root CA
+Timestamp=Oct 24, 2026 at 12:16:54 PM
+Notarization Ticket=stapled
+Info.plist entries=18
+TeamIdentifier=3MU9H2V9Y9
+Runtime Version=26.4.0
+Sealed Resources version=2 rules=13 files=70
+Internal requirements count=1 size=180
+Total signatures=1
+Chosen signature=1

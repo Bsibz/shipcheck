@@ -1,0 +1,23 @@
+Executable=/private/tmp/shipcheck-fixture/Demo.app/Contents/MacOS/Demo
+Identifier=Demo
+Format=bundle with Mach-O thin (arm64)
+CodeDirectory v=20400 size=253 flags=0x20002(adhoc,linker-signed) hashes=5+0 location=embedded
+VersionPlatform=1
+VersionMin=1769984
+VersionSDK=1769984
+Hash type=sha256 size=32
+CandidateCDHash sha256=d65f94360123eef3db70c667ebcd1f59852fb830
+CandidateCDHashFull sha256=d65f94360123eef3db70c667ebcd1f59852fb830d0b0e81667cc55034bdd75ae
+Hash choices=sha256
+CMSDigest=d65f94360123eef3db70c667ebcd1f59852fb830
+CMSDigestType=2
+Executable Segment base=0
+Executable Segment limit=20
+Executable Segment flags=0x1
+Page size=4096
+CDHash=d65f94360123eef3db70c667ebcd1f59852fb830
+Signature=adhoc
+Info.plist=not bound
+TeamIdentifier=not set
+Sealed Resources=none
+Internal requirements=none

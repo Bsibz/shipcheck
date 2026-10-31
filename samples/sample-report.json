@@ -1,0 +1,226 @@
+{
+  "tool": "shipcheck",
+  "version": "0.2.0",
+  "reportVersion": 1,
+  "timestamp": "2026-10-30T07:11:33.753Z",
+  "runtime": {
+    "macos": "Darwin 27 (demo documentation run)",
+    "arch": "arm64",
+    "node": "v24"
+  },
+  "target": {
+    "kind": "bundle",
+    "input": "/Users/demo/Downloads/Demo.app",
+    "bundlePath": "/Users/demo/Downloads/Demo.app",
+    "bundleName": "Demo.app"
+  },
+  "provenance": {
+    "artifact": {
+      "path": "/Users/demo/Downloads/Demo.app",
+      "kind": "bundle",
+      "sha256Basis": "not-applicable-directory",
+      "realPath": "/private/Users/demo/Downloads/Demo.app",
+      "modified": "2026-10-30T07:11:33.599Z",
+      "auditedBundle": "/private/Users/demo/Downloads/Demo.app"
+    },
+    "network": "offline",
+    "networkTools": [],
+    "networkNote": "shipcheck contains no network client and did not run spctl or stapler. Other local host tools (codesign, xattr, lipo, otool, file) are not sandboxed; offline is by design, not OS-enforced.",
+    "extraction": "none",
+    "hostTools": {
+      "codesign": "/usr/bin/codesign",
+      "file": "/usr/bin/file",
+      "lipo": "/usr/bin/lipo",
+      "xattr": "/usr/bin/xattr"
+    },
+    "toolEnvironment": "minimal env: PATH=/usr/bin:/bin:/usr/sbin:/sbin; DEVELOPER_DIR, DYLD_* and the rest of the parent environment are not passed",
+    "generatedBy": "shipcheck 0.2.0",
+    "limits": {
+      "nativeImages": 600,
+      "nativeToolOutputKiB": 1024,
+      "updateMetadataFiles": 8,
+      "updateMetadataBytes": 262144
+    }
+  },
+  "options": {
+    "failOn": "fail",
+    "strict": false,
+    "asarDepth": "header",
+    "hashes": "key",
+    "universal": false,
+    "pathsScan": "main",
+    "stapler": false,
+    "gatekeeper": false,
+    "hints": true,
+    "timeoutMs": 90000
+  },
+  "notes": [
+    "network: shipcheck has no network client; spctl and stapler were not run. Other host tools (codesign, xattr, lipo, otool, file) were invoked locally and are not sandboxed, so offline operation is by design, not OS-enforced.",
+    "gatekeeper: spctl was not run (opt-in via --gatekeeper); the Gatekeeper verdict is UNKNOWN."
+  ],
+  "findings": [
+    {
+      "id": "bundle.identifier",
+      "group": "bundle identity",
+      "status": "info",
+      "detail": "CFBundleIdentifier: com.example.demo",
+      "basis": "verified"
+    },
+    {
+      "id": "bundle.build-version",
+      "group": "bundle identity",
+      "status": "fail",
+      "detail": "CFBundleVersion missing — macOS treats build numbers as the machine-readable identity.",
+      "basis": "verified"
+    },
+    {
+      "id": "bundle.executable-present",
+      "group": "bundle identity",
+      "status": "info",
+      "detail": "Main executable: Contents/MacOS/Demo",
+      "basis": "verified"
+    },
+    {
+      "id": "bundle.minimum-system",
+      "group": "bundle identity",
+      "status": "warn",
+      "detail": "LSMinimumSystemVersion absent — users on older macOS crash on launch and your crash reports will look like product bugs.",
+      "hint": "Declare the minimum deployment target.",
+      "basis": "verified"
+    },
+    {
+      "id": "sign.presence",
+      "group": "signing",
+      "status": "fail",
+      "detail": "The bundle is not code-signed at all — Gatekeeper blocks install and users see “app is damaged” style blockers.",
+      "evidence": [
+        "codesign: code object is not signed at all"
+      ],
+      "hint": "Sign with a Developer ID identity under hardened runtime, then notarize and staple.",
+      "basis": "verified"
+    },
+    {
+      "id": "sign.validity",
+      "group": "signing",
+      "status": "skip",
+      "detail": "Signature validity skipped: nothing signed.",
+      "basis": "unknown"
+    },
+    {
+      "id": "sign.resources",
+      "group": "signing",
+      "status": "fail",
+      "detail": "Contents/_CodeSignature missing — not a complete signed bundle.",
+      "basis": "verified"
+    },
+    {
+      "id": "ent.hardened",
+      "group": "entitlements",
+      "status": "skip",
+      "detail": "Entitlements skipped: binary is unsigned.",
+      "basis": "unknown"
+    },
+    {
+      "id": "not.stapled",
+      "group": "notarization",
+      "status": "warn",
+      "detail": "No stapled ticket observed locally. Offline launch acceptance is unproven; assess a clean customer Mac.",
+      "evidence": [
+        "codesign -dv: no Notarization Ticket line"
+      ],
+      "hint": "Notarize and staple: xcrun notarytool submit → xcrun stapler staple.",
+      "basis": "inferred"
+    },
+    {
+      "id": "gatekeeper.assess",
+      "group": "gatekeeper",
+      "status": "unknown",
+      "detail": "Gatekeeper assessment not run: spctl may contact Apple, and shipcheck is offline by default. Result is UNKNOWN, not a pass.",
+      "hint": "Re-run with --gatekeeper to opt in (may contact Apple).",
+      "basis": "unknown"
+    },
+    {
+      "id": "gatekeeper.quarantine",
+      "group": "gatekeeper",
+      "status": "info",
+      "detail": "No quarantine xattr (typical for locally-installed or adopted apps).",
+      "basis": "verified"
+    },
+    {
+      "id": "arch.main",
+      "group": "architecture",
+      "status": "unknown",
+      "detail": "Could not determine main executable architecture (lipo AND file failed).",
+      "evidence": [
+        "/Users/demo/Downloads/Demo.app/Contents/MacOS/Demo"
+      ],
+      "basis": "unknown"
+    },
+    {
+      "id": "asar.layout",
+      "group": "asar",
+      "status": "warn",
+      "detail": "Neither app.asar nor a loose Resources/app directory found — payload layout is not a recognizable Electron shape.",
+      "basis": "verified"
+    },
+    {
+      "id": "native.inventory",
+      "group": "native code",
+      "status": "info",
+      "detail": "No Mach-O native payload found in the bundle.",
+      "basis": "verified"
+    },
+    {
+      "id": "updater.story",
+      "group": "updater",
+      "status": "info",
+      "basis": "inferred",
+      "detail": "No updater hints observed in the inspected bundle. Custom code, remote feeds and manual delivery are not established by file absence."
+    },
+    {
+      "id": "updater.delivery",
+      "group": "updater",
+      "status": "unknown",
+      "detail": "No update check, download, signature verification, install, feed access or end-to-end update rehearsal was performed.",
+      "basis": "unknown"
+    },
+    {
+      "id": "paths.info-plist",
+      "group": "paths",
+      "status": "pass",
+      "detail": "Info.plist is free of generator-host paths.",
+      "basis": "inferred"
+    },
+    {
+      "id": "paths.executables",
+      "group": "paths",
+      "status": "pass",
+      "detail": "No build-host path text found in 1 scanned Mach-O binary(ies).",
+      "basis": "inferred"
+    },
+    {
+      "id": "hashes.executables",
+      "group": "hashes",
+      "status": "pass",
+      "detail": "SHA-256 recorded for 1 of 1 artifact(s).",
+      "evidence": [
+        "377bc5e04baff7614ba765935928d5dd1726cd90c109aaeffed98eb362a1d1c6  Contents/MacOS/Demo"
+      ],
+      "basis": "verified"
+    }
+  ],
+  "summary": {
+    "pass": 3,
+    "warn": 3,
+    "fail": 3,
+    "info": 5,
+    "unknown": 3,
+    "skip": 2
+  },
+  "basisSummary": {
+    "verified": 10,
+    "inferred": 4,
+    "unknown": 5
+  },
+  "verdict": "failures"
+}
