@@ -8,7 +8,7 @@ No version has been published yet. Once released, only the latest `0.x` release 
 
 ## Reporting a vulnerability
 
-No public repository or reporting channel exists yet; one will be added here before the first publication. Until then, do not disclose exploitable problems publicly. When it exists, report privately, not in a public issue. Include the ShipCheck version, macOS and Node versions, and a minimal reproducer; do not attach proprietary apps or secrets.
+The public repository now exists, but a private vulnerability-reporting channel has not been configured yet. Do not put exploitable details, proprietary apps, credentials, or secrets in a public issue. A verified private reporting path will be documented here before the first tagged/package release.
 
 This is a small project and no response-time guarantee is made.
 

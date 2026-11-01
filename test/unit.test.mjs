@@ -18,23 +18,25 @@ const FIX = join(HERE, "fixtures", "data");
 
 // ---- plist ------------------------------------------------------------------
 
-test("plist parser handles a real Apple Info.plist with attributes on <plist>", () => {
-  const xml = readFileSync("/Applications/Ollama.app/Contents/Info.plist", "utf8");
+test("plist parser handles plist root attributes from a committed fixture", () => {
+  const xml = readFileSync(join(FIX, "plist-with-attributes.xml"), "utf8");
   const r = parsePlistXml(xml);
   assert.equal(r.ok, true);
   const dict = r.value;
-  assert.equal(getString(dict, "CFBundleIdentifier"), "com.electron.ollama");
-  assert.equal(getString(dict, "CFBundleShortVersionString"), "0.40.11");
-  assert.equal(getString(dict, "CFBundleExecutable"), "Ollama");
+  assert.equal(getString(dict, "CFBundleIdentifier"), "com.example.fixture");
+  assert.equal(getString(dict, "CFBundleShortVersionString"), "1.2.3");
+  assert.equal(getString(dict, "CFBundleExecutable"), "FixtureApp");
 });
 
-test("plist parser reads ElectronAsarIntegrity dicts out of real Info.plists", () => {
-  const xml = readFileSync("/Applications/ChatGPT.app/Contents/Info.plist", "utf8");
+test("plist parser reads ElectronAsarIntegrity dicts from a committed fixture", () => {
+  const xml = readFileSync(join(FIX, "plist-electron-asar-integrity.xml"), "utf8");
   const r = parsePlistXml(xml);
+  assert.equal(r.ok, true);
   const dict = r.value;
   const integ = dict["ElectronAsarIntegrity"];
   assert.ok(integ);
   const appAsar = integ["Resources/app.asar"];
+  assert.equal(appAsar.algorithm, "SHA256");
   assert.match(appAsar.hash, /^[0-9a-f]{64}$/);
 });
 
