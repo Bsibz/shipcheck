@@ -2,9 +2,9 @@
 
 All notable changes are recorded here. Versions follow [semver](https://semver.org/); while the major version is 0, minor releases may change report fields, finding IDs and flags.
 
-## [0.2.0] - unreleased
+## [0.2.0] - 2026-11-01
 
-Prepared as the first public release; not yet published. Earlier internal milestones (0.1.0, 0.2.0-rc.0) were never published.
+First public release. Earlier internal milestones (0.1.0, 0.2.0-rc.0) were never published.
 
 ### Added
 - Read-only audit of `.app` bundles, release ZIPs, and DMG containers with text, JSON, Markdown, and standalone HTML reports.
@@ -13,7 +13,7 @@ Prepared as the first public release; not yet published. Earlier internal milest
 - DMG container metadata via a fixed, non-mounting `hdiutil imageinfo` route.
 - Evidence classes (VERIFIED / INFERRED / UNKNOWN); unknown and skipped checks are reported as unresolved, never as passes.
 - `--strict`: exit 6 when recorded UNKNOWN/skipped findings remain, after failure (2) and warning (1) precedence; rejected with `--fail-on never` (exit 3).
-- macOS GitHub Actions workflow (Node 22 and 24; not yet run on a hosted runner): build, tests, strict-mode exit-code smoke test, and a release-readiness check.
+- macOS GitHub Actions workflow (Node 22 and 24, green on hosted runners): build, tests, strict-mode exit-code smoke test, and a release-readiness check.
 - `npm run release:check`: verifies `package.json`, lockfile, `dist/cli.js --version`, this changelog, an optional git tag, and the npm tarball contents agree and carry no private paths.
 
 ### Notes

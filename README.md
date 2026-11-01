@@ -4,7 +4,7 @@ A local, read-only release artifact audit for macOS and Electron teams. Inspect 
 
 ShipCheck is a preflight, not a launch test or release certificate. It never launches the inspected application. A clean report means no warning or failure was detected within the selected checks. Unknown and skipped checks are still unresolved, and they are not passes.
 
-**Status: 0.2.0, prepared for a first public release. Not yet published to npm or any public Git host.** The 0.x line follows semver's "anything may change" rule: report JSON fields, finding IDs and flags can still change between minor versions, so pin an exact version in CI. Validation so far is on synthetic fixtures and one real Electron app on one Apple-silicon Mac (see [VALIDATION.md](VALIDATION.md)); expect rough edges on bundle layouts we have not seen, and please file them.
+**Status: 0.2.0, the first public release.** The 0.x line follows semver's "anything may change" rule: report JSON fields, finding IDs and flags can still change between minor versions, so pin an exact version in CI. Validation so far is on synthetic fixtures and one real Electron app on one Apple-silicon Mac (see [VALIDATION.md](VALIDATION.md)); expect rough edges on bundle layouts we have not seen, and please file them.
 
 ## Install
 
@@ -20,16 +20,16 @@ npm install --prefix ~/shipcheck-prefix ./shipcheck-mac-0.2.0.tgz
 ~/shipcheck-prefix/node_modules/.bin/shipcheck --version
 ```
 
-### From npm (only after the first publication; not yet available)
+### From npm
 
 ```sh
 npm install -g shipcheck-mac
 npx shipcheck-mac /Applications/Example.app
 ```
 
-### Planned locations (future, unpublished)
+### Source and issues
 
-A public source repository and issue tracker are planned but do not exist yet. No URL is claimed here; this section will be updated when they do.
+Source and issue tracker: <https://github.com/Bsibz/shipcheck>.
 
 ### From a source checkout
 
@@ -58,7 +58,7 @@ CI gate example (fails the job on warnings and on any unresolved check):
 shipcheck build/Example.app --format json --out receipt.json --fail-on warn --strict
 ```
 
-Exit codes are documented under [CI exit codes](#ci-exit-codes). The included GitHub Actions workflow is `.github/workflows/ci.yml`; it has not run on a hosted runner yet.
+Exit codes are documented under [CI exit codes](#ci-exit-codes). The included GitHub Actions workflow is `.github/workflows/ci.yml`; it runs on hosted macOS runners with Node 22 and 24.
 
 ## Reports
 
@@ -111,7 +111,7 @@ Use `--strict` for CI that must reject every recorded UNKNOWN/skipped finding. F
 shipcheck build/Example.app --format json --out receipt.json --fail-on warn
 ```
 
-Example job for your own app repository (macOS runner required; works once `shipcheck-mac@0.2.0` is published to npm, which has not happened yet):
+Example job for your own app repository (macOS runner required; uses the published `shipcheck-mac@0.2.0`):
 
 ```yaml
 - run: npx --yes shipcheck-mac@0.2.0 build/Example.app --format json --out receipt.json --fail-on warn --strict

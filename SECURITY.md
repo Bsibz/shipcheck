@@ -4,11 +4,11 @@ ShipCheck parses untrusted release artifacts (bundles, ZIPs, DMG containers, ASA
 
 ## Supported versions
 
-No version has been published yet. Once released, only the latest `0.x` release will receive fixes.
+Only the latest `0.x` release receives fixes.
 
 ## Reporting a vulnerability
 
-The public repository now exists, but a private vulnerability-reporting channel has not been configured yet. Do not put exploitable details, proprietary apps, credentials, or secrets in a public issue. A verified private reporting path will be documented here before the first tagged/package release.
+Report privately through GitHub: open <https://github.com/Bsibz/shipcheck/security/advisories/new> (the repository's **Security** tab, **Report a vulnerability**). Do not put exploitable details, proprietary apps, credentials, or secrets in a public issue; if you cannot use the private form, open a public issue that asks for a private contact without including any details.
 
 This is a small project and no response-time guarantee is made.
 
